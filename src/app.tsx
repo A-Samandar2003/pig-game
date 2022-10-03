@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Controls from './components/controls/controls';
 import './app.css';
 
@@ -28,16 +28,19 @@ function App() {
       setScore(dice)
 
     }
-    else if (scores[player] > 30) {
-      alert(`winner ${player}`)
-      resetGame()
-    }
+
     else {
       setPlayer(player === 0 ? 1 : 0);
       scores[player] += currentScore;
       setCurrentScore(0)
     }
   }
+  useEffect(() => {
+    if (scores[player] > 30) {
+      alert(`winner ${player}`);
+      resetGame()
+    }
+  },)
 
   return (
     <div className="wrapper">
