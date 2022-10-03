@@ -1,13 +1,13 @@
 import { useState } from 'react';
-import './app.css';
 import Controls from './components/controls/controls';
+import './app.css';
 
 
 function App() {
   const [player, setPlayer] = useState(0);
   const [score, setScore] = useState(1);
   const [currentScore, setCurrentScore] = useState(0);
-  const [scores] = useState([0, 0]);
+  const [scores, setSCores] = useState([0, 0]);
 
   const switchPlayer = () => {
     setPlayer(player === 0 ? 1 : 0);
@@ -15,14 +15,14 @@ function App() {
     setCurrentScore(0)
   }
   const resetGame = () => {
+    setSCores([0, 0]);
     setCurrentScore(0);
-    scores[0] = 0;
-    scores[1] = 0;
   }
+
   const rollDIce = () => {
 
     let dice = Math.trunc(Math.random() * 6) + 1;
-    
+
     if (dice !== 1) {
       setCurrentScore(currentScore + dice);
       setScore(dice)
